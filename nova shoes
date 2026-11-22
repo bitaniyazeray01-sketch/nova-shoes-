@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NOVA SHOES | Walk Your Way</title>
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{font-family:Arial,sans-serif;background:#0d0d0d;color:white}
+
+header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929}
+
+.logo{font-size:27px;font-weight:900;letter-spacing:3px;color:#d6b46a}
+
+nav a{color:white;text-decoration:none;margin-left:15px;font-size:13px}
+
+.hero{padding:85px 7%;text-align:center;background:linear-gradient(135deg,#171717,#292015)}
+
+.hero small{color:#d6b46a;letter-spacing:4px}
+
+.hero h1{font-size:48px;margin:20px 0}
+
+.hero h1 span{color:#d6b46a}
+
+.hero p{color:#bbb;margin-bottom:28px}
+
+.btn{background:#d6b46a;color:#111;padding:14px 25px;border:0;border-radius:4px;font-weight:bold;text-decoration:none;display:inline-block;cursor:pointer}
+
+section{padding:55px 6%}
+
+.heading{text-align:center;margin-bottom:30px}
+
+.heading h2{font-size:29px}
+
+.heading p{color:#aaa;margin-top:10px}
+
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+
+.filters button{background:#202020;color:white;border:1px solid #444;padding:10px 18px;border-radius:20px;cursor:pointer}
+
+.filters button.active{background:#d6b46a;color:#111}
+
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+
+.product{background:#191919;border-radius:9px;overflow:hidden;border:1px solid #303030}
+
+.product img{width:100%;height:170px;object-fit:cover}
+
+.details{padding:13px}
+
+.details h3{font-size:16px}
+
+.details p{color:#d6b46a;margin:9px 0;font-weight:bold}
+
+.details button{width:100%;padding:11px;background:#d6b46a;border:0;border-radius:4px;font-weight:bold;cursor:pointer}
+
+.cart{background:#191919;border-radius:10px;padding:20px;margin-top:25px}
+
+.cart h3{color:#d6b46a;margin-bottom:15px}
+
+.cart-item{display:flex;justify-content:space-between;gap:10px;margin:12px 0;color:#ddd;font-size:14px}
+
+.cart-item button{background:none;border:0;color:#e88;cursor:pointer}
+
+.total{border-top:1px solid #444;padding-top:15px;margin-top:15px;font-weight:bold}
+
+.cart .btn{width:100%;margin-top:18px}
+
+.about{text-align:center;background:#171717}
+
+.about p{color:#bbb;line-height:1.8;max-width:550px;margin:15px auto}
+
+.contact{text-align:center}
+
+.contact p{color:#bbb;margin:12px}
+
+footer{text-align:center;background:#080808;padding:25px;color:#888;font-size:13px}
+
+@media(min-width:700px){
+
+.products{grid-template-columns:repeat(3,1fr)}
+
+.hero h1{font-size:65px}
+
+.product img{height:240px}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">NOVA.</div>
+
+<nav>
+
+<a href="#home">Home</a>
+
+<a href="#shop">Shop</a>
+
+<a href="#about">About</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+<div class="hero" id="home">
+
+<small>WELCOME TO NOVA SHOES</small>
+
+<h1>WALK YOUR <span>WAY.</span></h1>
+
+<p>Discover your style. Find your perfect pair.</p>
+
+<a href="#shop" class="btn">SHOP COLLECTION</a>
+
+</div>
+
+<section id="shop">
+
+<div class="heading">
+
+<h2>OUR COLLECTION</h2>
+
+<p>Find the perfect shoes for every moment.</p>
+
+</div>
+
+<div class="filters">
+
+<button class="active" onclick="filter('All',this)">All</button>
+
+<button onclick="filter('Sneakers',this)">Sneakers</button>
+
+<button onclick="filter('Heels',this)">Heels</button>
+
+<button onclick="filter('Casual',this)">Casual</button>
+
+</div>
+
+<div class="products" id="products"></div>
+
+<div class="cart">
+
+<h3>YOUR SHOPPING CART 🛍️</h3>
+
+<div id="cartItems">Your cart is empty.</div>
+
+<div class="total" id="total">Total: 0 ETB</div>
+
+<button class="btn" onclick="order()">ORDER ON WHATSAPP</button>
+
+</div>
+
+</section>
+
+<section class="about" id="about">
+
+<div class="heading"><h2>ABOUT NOVA</h2></div>
+
+<p>NOVA SHOES is all about style, comfort and confidence. Discover sneakers, elegant heels and casual shoes made for your everyday moments.</p>
+
+<p><b style="color:#d6b46a">NOVA SHOES — WALK YOUR WAY.</b></p>
+
+</section>
+
+<section class="contact" id="contact">
+
+<div class="heading"><h2>CONTACT US</h2></div>
+
+<p>Have a question or want to order?</p>
+
+<p>WhatsApp: Contact us to order your favorite pair.</p>
+
+<a class="btn" href="#shop">EXPLORE SHOES</a>
+
+</section>
+
+<footer>
+
+<p>© 2026 NOVA SHOES. All rights reserved.</p>
+
+<p style="color:#d6b46a;margin-top:8px">WALK YOUR WAY.</p>
+
+</footer>
+
+<script>
+
+const shoes=[
+
+{name:"Classic Street Sneakers",category:"Sneakers",price:2500,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
+
+{name:"White Everyday Sneakers",category:"Sneakers",price:2800,image:"https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600"},
+
+{name:"Urban Sport Sneakers",category:"Sneakers",price:3200,image:"https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600"},
+
+{name:"Elegant Black Heels",category:"Heels",price:3500,image:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600"},
+
+{name:"Classic Fashion Heels",category:"Heels",price:3800,image:"https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600"},
+
+{name:"Everyday Casual Shoes",category:"Casual",price:2200,image:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600"}
+
+];
+
+let cart=[];
+
+function display(items){
+
+document.getElementById("products").innerHTML=items.map((s)=>{
+
+let i=shoes.indexOf(s);
+
+return `<div class="product">
+
+<img src="${s.image}" alt="${s.name}">
+
+<div class="details">
+
+<h3>${s.name}</h3>
+
+<p>${s.price.toLocaleString()} ETB</p>
+
+<button onclick="add(${i})">ADD TO CART +</button>
+
+</div></div>`;
+
+}).join("");
+
+}
+
+function filter(category,button){
+
+document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+
+button.classList.add("active");
+
+display(category==="All"?shoes:shoes.filter(s=>s.category===category));
+
+}
+
+function add(i){
+
+cart.push(i);
+
+updateCart();
+
+}
+
+function removeItem(position){
+
+cart.splice(position,1);
+
+updateCart();
+
+}
+
+function updateCart(){
+
+let area=document.getElementById("cartItems");
+
+if(cart.length===0){
+
+area.innerHTML="Your cart is empty.";
+
+}else{
+
+area.innerHTML=cart.map((i,pos)=>
+
+`<div class="cart-item">
+
+<span>${shoes[i].name}</span>
+
+<span>${shoes[i].price.toLocaleString()} ETB <button onclick="removeItem(${pos})">✕</button></span>
+
+</div>`).join("");
+
+}
+
+let total=cart.reduce((sum,i)=>sum+shoes[i].price,0);
+
+document.getElementById("total").innerText="Total: "+total.toLocaleString()+" ETB";
+
+}
+
+function order(){
+
+if(cart.length===0){
+
+alert("Please add shoes to your cart first!");
+
+return;
+
+}
+
+let message="Hello NOVA SHOES! I want to order:\n";
+
+cart.forEach(i=>message+=shoes[i].name+" - "+shoes[i].price+" ETB\n");
+
+let total=cart.reduce((sum,i)=>sum+shoes[i].price,0);
+
+message+="Total: "+total+" ETB";
+
+let phone="251900000000";
+
+window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message),"_blank");
+
+}
+
+display(shoes);
+
+</script>
+
+</body>
+
+</html>
