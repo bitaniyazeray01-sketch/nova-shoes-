@@ -14,67 +14,75 @@
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 
-body{font-family:Arial,sans-serif;background:#0d0d0d;color:white}
+body{background:#0c0c0c;color:white;font-family:Arial,sans-serif}
 
-header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333}
 
 .logo{font-size:27px;font-weight:900;letter-spacing:3px;color:#d6b46a}
 
-nav a{color:white;text-decoration:none;margin-left:15px;font-size:13px}
+nav a{color:white;text-decoration:none;margin-left:12px;font-size:13px}
 
-.hero{padding:85px 7%;text-align:center;background:linear-gradient(135deg,#171717,#292015)}
+.hero{text-align:center;padding:90px 15px;background:linear-gradient(130deg,#171717,#332719)}
 
 .hero small{color:#d6b46a;letter-spacing:4px}
 
-.hero h1{font-size:48px;margin:20px 0}
+.hero h1{font-size:46px;margin:20px 0}
 
-.hero h1 span{color:#d6b46a}
+.hero span{color:#d6b46a}
 
-.hero p{color:#bbb;margin-bottom:28px}
+.hero p{color:#ccc;margin-bottom:25px}
 
-.btn{background:#d6b46a;color:#111;padding:14px 25px;border:0;border-radius:4px;font-weight:bold;text-decoration:none;display:inline-block;cursor:pointer}
+.btn{background:#d6b46a;color:#111;border:0;padding:14px 23px;border-radius:5px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}
 
 section{padding:55px 6%}
 
 .heading{text-align:center;margin-bottom:30px}
 
-.heading h2{font-size:29px}
+.heading h2{font-size:27px}
 
 .heading p{color:#aaa;margin-top:10px}
 
-.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-bottom:25px}
 
-.filters button{background:#202020;color:white;border:1px solid #444;padding:10px 18px;border-radius:20px;cursor:pointer}
+.filters button{background:#222;color:white;border:1px solid #555;padding:10px 16px;border-radius:20px}
 
 .filters button.active{background:#d6b46a;color:#111}
 
-.products{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 
-.product{background:#191919;border-radius:9px;overflow:hidden;border:1px solid #303030}
+.product{background:#1a1a1a;border:1px solid #333;border-radius:9px;overflow:hidden}
 
-.product img{width:100%;height:170px;object-fit:cover}
+.product img{width:100%;height:160px;object-fit:cover}
 
-.details{padding:13px}
+.details{padding:12px}
 
-.details h3{font-size:16px}
+.details h3{font-size:15px}
 
-.details p{color:#d6b46a;margin:9px 0;font-weight:bold}
+.price{color:#d6b46a;font-weight:bold;margin:10px 0}
 
-.details button{width:100%;padding:11px;background:#d6b46a;border:0;border-radius:4px;font-weight:bold;cursor:pointer}
+.details button{width:100%;padding:11px;background:#d6b46a;border:0;border-radius:4px;font-weight:bold}
 
-.cart{background:#191919;border-radius:10px;padding:20px;margin-top:25px}
+.cart,.checkout{background:#191919;padding:20px;border-radius:10px;margin-top:25px}
 
-.cart h3{color:#d6b46a;margin-bottom:15px}
+.cart h3,.checkout h3{color:#d6b46a;margin-bottom:16px}
 
-.cart-item{display:flex;justify-content:space-between;gap:10px;margin:12px 0;color:#ddd;font-size:14px}
+.cart-item{display:flex;justify-content:space-between;gap:8px;margin:12px 0;font-size:13px}
 
-.cart-item button{background:none;border:0;color:#e88;cursor:pointer}
+.cart-item button{background:none;color:#ff7777;border:0}
 
 .total{border-top:1px solid #444;padding-top:15px;margin-top:15px;font-weight:bold}
 
-.cart .btn{width:100%;margin-top:18px}
+.checkout label{display:block;margin:15px 0 7px;color:#ddd;font-size:14px}
+
+.checkout input,.checkout textarea,.checkout select{width:100%;padding:13px;background:#292929;color:white;border:1px solid #555;border-radius:5px;font-size:15px}
+
+.checkout textarea{height:85px;resize:vertical}
+
+.checkout .btn{width:100%;margin-top:20px}
+
+.note{font-size:12px;color:#aaa;margin-top:12px;line-height:1.6}
 
 .about{text-align:center;background:#171717}
 
@@ -84,15 +92,15 @@ section{padding:55px 6%}
 
 .contact p{color:#bbb;margin:12px}
 
-footer{text-align:center;background:#080808;padding:25px;color:#888;font-size:13px}
+footer{text-align:center;background:#080808;padding:25px;color:#999;font-size:13px}
 
 @media(min-width:700px){
 
 .products{grid-template-columns:repeat(3,1fr)}
 
-.hero h1{font-size:65px}
-
 .product img{height:240px}
+
+.hero h1{font-size:65px}
 
 }
 
@@ -164,7 +172,63 @@ footer{text-align:center;background:#080808;padding:25px;color:#888;font-size:13
 
 <div class="total" id="total">Total: 0 ETB</div>
 
-<button class="btn" onclick="order()">ORDER ON WHATSAPP</button>
+</div>
+
+<div class="checkout">
+
+<h3>DELIVERY & CHECKOUT</h3>
+
+<label>Full name</label>
+
+<input id="customer" placeholder="Enter your name">
+
+<label>Phone number</label>
+
+<input id="phone" type="tel" placeholder="09XXXXXXXX">
+
+<label>Order method</label>
+
+<select id="method" onchange="deliveryOption()">
+
+<option value="Delivery">Home delivery</option>
+
+<option value="Pickup">Store pickup</option>
+
+</select>
+
+<div id="addressBox">
+
+<label>Delivery address</label>
+
+<textarea id="address" placeholder="Enter your city, area, house number and location details"></textarea>
+
+</div>
+
+<label>Preferred payment method</label>
+
+<select id="payment">
+
+<option>Payment method to be confirmed</option>
+
+<option>Cash on delivery (if available)</option>
+
+<option>Bank transfer (if available)</option>
+
+</select>
+
+<label>Additional instructions</label>
+
+<textarea id="instructions" placeholder="Shoe size, color or other requests"></textarea>
+
+<div class="note">
+
+Delivery fee: To be confirmed depending on your location.
+
+Final delivery charges and payment arrangements will be confirmed through WhatsApp.
+
+</div>
+
+<button class="btn" onclick="order()">PLACE ORDER ON WHATSAPP</button>
 
 </div>
 
@@ -174,9 +238,9 @@ footer{text-align:center;background:#080808;padding:25px;color:#888;font-size:13
 
 <div class="heading"><h2>ABOUT NOVA</h2></div>
 
-<p>NOVA SHOES is all about style, comfort and confidence. Discover sneakers, elegant heels and casual shoes made for your everyday moments.</p>
+<p>NOVA SHOES is all about style, comfort and confidence. Discover sneakers, elegant heels and casual shoes for every occasion.</p>
 
-<p><b style="color:#d6b46a">NOVA SHOES — WALK YOUR WAY.</b></p>
+<p style="color:#d6b46a"><b>NOVA SHOES — WALK YOUR WAY.</b></p>
 
 </section>
 
@@ -184,11 +248,9 @@ footer{text-align:center;background:#080808;padding:25px;color:#888;font-size:13
 
 <div class="heading"><h2>CONTACT US</h2></div>
 
-<p>Have a question or want to order?</p>
+<p>Questions about sizes, prices or delivery?</p>
 
-<p>WhatsApp: Contact us to order your favorite pair.</p>
-
-<a class="btn" href="#shop">EXPLORE SHOES</a>
+<p>We're happy to help you find your perfect pair.</p>
 
 </section>
 
@@ -202,19 +264,21 @@ footer{text-align:center;background:#080808;padding:25px;color:#888;font-size:13
 
 <script>
 
+const WHATSAPP_NUMBER="251900000000";
+
 const shoes=[
 
-{name:"Classic Street Sneakers",category:"Sneakers",price:2500,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
+{name:"Classic Street Sneakers",category:"Sneakers",price:2500,size:"All sizes available on request",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
 
-{name:"White Everyday Sneakers",category:"Sneakers",price:2800,image:"https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600"},
+{name:"White Everyday Sneakers",category:"Sneakers",price:2800,size:"All sizes available on request",image:"https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600"},
 
-{name:"Urban Sport Sneakers",category:"Sneakers",price:3200,image:"https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600"},
+{name:"Urban Sport Sneakers",category:"Sneakers",price:3200,size:"All sizes available on request",image:"https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600"},
 
-{name:"Elegant Black Heels",category:"Heels",price:3500,image:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600"},
+{name:"Elegant Black Heels",category:"Heels",price:3500,size:"All sizes available on request",image:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600"},
 
-{name:"Classic Fashion Heels",category:"Heels",price:3800,image:"https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600"},
+{name:"Classic Fashion Heels",category:"Heels",price:3800,size:"All sizes available on request",image:"https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=600"},
 
-{name:"Everyday Casual Shoes",category:"Casual",price:2200,image:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600"}
+{name:"Everyday Casual Shoes",category:"Casual",price:2200,size:"All sizes available on request",image:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600"}
 
 ];
 
@@ -222,11 +286,13 @@ let cart=[];
 
 function display(items){
 
-document.getElementById("products").innerHTML=items.map((s)=>{
+document.getElementById("products").innerHTML=items.map(s=>{
 
 let i=shoes.indexOf(s);
 
-return `<div class="product">
+return `
+
+<div class="product">
 
 <img src="${s.image}" alt="${s.name}">
 
@@ -234,11 +300,13 @@ return `<div class="product">
 
 <h3>${s.name}</h3>
 
-<p>${s.price.toLocaleString()} ETB</p>
+<div class="price">${s.price.toLocaleString()} ETB</div>
 
 <button onclick="add(${i})">ADD TO CART +</button>
 
-</div></div>`;
+</div>
+
+</div>`;
 
 }).join("");
 
@@ -280,13 +348,15 @@ area.innerHTML="Your cart is empty.";
 
 }else{
 
-area.innerHTML=cart.map((i,pos)=>
+area.innerHTML=cart.map((i,pos)=>`
 
-`<div class="cart-item">
+<div class="cart-item">
 
 <span>${shoes[i].name}</span>
 
-<span>${shoes[i].price.toLocaleString()} ETB <button onclick="removeItem(${pos})">✕</button></span>
+<span>${shoes[i].price.toLocaleString()} ETB
+
+<button onclick="removeItem(${pos})">✕</button></span>
 
 </div>`).join("");
 
@@ -294,7 +364,19 @@ area.innerHTML=cart.map((i,pos)=>
 
 let total=cart.reduce((sum,i)=>sum+shoes[i].price,0);
 
-document.getElementById("total").innerText="Total: "+total.toLocaleString()+" ETB";
+document.getElementById("total").innerText=
+
+"Total: "+total.toLocaleString()+" ETB";
+
+}
+
+function deliveryOption(){
+
+let method=document.getElementById("method").value;
+
+document.getElementById("addressBox").style.display=
+
+method==="Delivery"?"block":"none";
 
 }
 
@@ -308,17 +390,89 @@ return;
 
 }
 
-let message="Hello NOVA SHOES! I want to order:\n";
+let name=document.getElementById("customer").value.trim();
 
-cart.forEach(i=>message+=shoes[i].name+" - "+shoes[i].price+" ETB\n");
+let phone=document.getElementById("phone").value.trim();
+
+let method=document.getElementById("method").value;
+
+let address=document.getElementById("address").value.trim();
+
+let payment=document.getElementById("payment").value;
+
+let instructions=document.getElementById("instructions").value.trim();
+
+if(!name||!phone){
+
+alert("Please enter your name and phone number.");
+
+return;
+
+}
+
+if(method==="Delivery"&&!address){
+
+alert("Please enter your delivery address.");
+
+return;
+
+}
 
 let total=cart.reduce((sum,i)=>sum+shoes[i].price,0);
 
-message+="Total: "+total+" ETB";
+let message=
 
-let phone="251900000000";
+"HELLO NOVA SHOES! 🖤\n\n"+
 
-window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message),"_blank");
+"NEW ORDER\n"+
+
+"Customer: "+name+"\n"+
+
+"Phone: "+phone+"\n"+
+
+"Order method: "+method+"\n";
+
+if(method==="Delivery"){
+
+message+="Delivery address: "+address+"\n";
+
+}
+
+message+="\nORDER DETAILS:\n";
+
+cart.forEach(i=>{
+
+message+=shoes[i].name+" - "+shoes[i].price+" ETB\n";
+
+});
+
+message+="\nTOTAL: "+total+" ETB\n"+
+
+"Delivery fee: To be confirmed\n"+
+
+"Payment: "+payment+"\n"+
+
+"Additional instructions: "+(instructions||"None")+
+
+"\n\nPlease confirm my order. Thank you!";
+
+if(WHATSAPP_NUMBER==="251900000000"){
+
+alert("Please set your real NOVA SHOES WhatsApp number in the code before accepting orders.");
+
+return;
+
+}
+
+window.open(
+
+"https://wa.me/"+WHATSAPP_NUMBER+
+
+"?text="+encodeURIComponent(message),
+
+"_blank"
+
+);
 
 }
 
